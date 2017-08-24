@@ -1,0 +1,6 @@
+---
+# defaults file for golang
+
+golang_install_url: ftp://10.0.250.100/pub/golang/linux/go1.8.3.linux-amd64.tar.gz
+
+golang_install_dir: /usr/local 
