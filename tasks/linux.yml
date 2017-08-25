@@ -1,0 +1,31 @@
+---
+
+- name: Add the Linux OS specific varibles
+  include_vars: linux.yml
+
+- name: Setting host golang facts
+  set_fact:
+    golang_package: go{{ golang_version }}.{{ os_info.family }}-{{ os_info.architecture[ansible_architecture] }}.{{ golang_package_kind }}
+    golang_checksum: "{{ golang_checksum_algo }}:{{ golang_packages[golang_version][ansible_architecture].checksum }}"
+
+- name: Print info[linux]
+  debug:
+    msg: "{{ golang_base_install_url }}/{{ golang_package }}"
+
+- name: Download golang package
+  get_url:
+    url: "{{ golang_base_install_url }}/{{ golang_package }}"
+    dest: "{{ golang_temp_dir }}"
+    checksum: "{{ golang_checksum }}"
+
+- name: Install golang
+  unarchive: 
+    src: "{{ golang_temp_dir }}/{{ golang_package }}"
+    dest: "{{ golang_install_dir }}"
+    copy: no
+
+- name: Setup the environment
+  template: src=golang.sh dest=/etc/profile.d/golang.sh
+
+- name: Remove golang package
+  file: path={{ golang_temp_dir }}/{{ golang_package }} state=absent

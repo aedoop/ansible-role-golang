@@ -1,6 +1,12 @@
 ---
 # defaults file for golang
 
-golang_install_url: ftp://10.0.250.100/pub/golang/linux/go1.8.3.linux-amd64.tar.gz
+#golang_download_url: ftp://10.0.250.100/pub/golang/linux/go1.8.3.linux-amd64.tar.gz
 
-golang_install_dir: /usr/local 
+#golang_download_url: 
+
+offline: true
+
+golang_base_install_url: https://storage.googleapis.com/golang
+
+golang_checksum_algo: sha256

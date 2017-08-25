@@ -1,0 +1,23 @@
+- block:
+  - name: Print info
+    debug:
+      var: version_check_result
+
+  - name: Download golang package
+    get_url: 
+      url: "{{ golang_install_url }}"
+      dest: "/tmp/golang.tar.gz"
+  
+  - name: Unpack the archive
+    unarchive: 
+      src: "/tmp/golang.tar.gz"
+      dest: "{{golang_install_dir}}"
+      copy: no
+
+  - name: Add binaries to PATH if required
+    template: src=golang.sh dest=/etc/profile.d/golang.sh
+
+  - name: Remove golang package
+    file: path=/tmp/golang.tar.gz state=absent
+  
+  when: false

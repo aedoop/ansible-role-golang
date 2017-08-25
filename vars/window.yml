@@ -1,0 +1,15 @@
+---
+golang_version: "1.8.3"
+golang_install_dir: c://soft
+golang_temp_dir: c://soft
+golang_package_kind: zip
+
+os_info:
+  family: windows 
+  architecture:
+    64-bit: amd64
+
+golang_packages:
+  "1.8.3":
+    64-bit:
+      checksum: de026caef4c5b4a74f359737dcb2d14c67ca45c45093755d3b0d2e0ee3aafd96
