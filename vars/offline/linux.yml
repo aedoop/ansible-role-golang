@@ -1,0 +1,5 @@
+---
+
+golang_package_path: go1.8.3.linux-amd64.tar.gz
+golang_install_dir: /usr/local 
+golang_temp_dir: /usr/local/src

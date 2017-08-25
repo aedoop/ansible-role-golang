@@ -1,7 +1,7 @@
 ---
 
 - name: Add the Linux OS specific varibles
-  include_vars: linux.yml
+  include_vars: online/linux.yml
 
 - name: Setting host golang facts
   set_fact:
@@ -15,17 +15,16 @@
 - name: Download golang package
   get_url:
     url: "{{ golang_base_install_url }}/{{ golang_package }}"
-    dest: "{{ golang_temp_dir }}"
+    dest: "{{ golang_temp_linux_dir }}"
     checksum: "{{ golang_checksum }}"
 
 - name: Install golang
   unarchive: 
-    src: "{{ golang_temp_dir }}/{{ golang_package }}"
-    dest: "{{ golang_install_dir }}"
+    src: "{{ golang_temp_linux_dir }}/{{ golang_package }}"
+    dest: "{{ golang_install_linux_dir }}"
     copy: no
 
-- name: Setup the environment
-  template: src=golang.sh dest=/etc/profile.d/golang.sh
-
 - name: Remove golang package
-  file: path={{ golang_temp_dir }}/{{ golang_package }} state=absent
+  file: path={{ golang_temp_linux_dir }}/{{ golang_package }} state=absent
+
+- include: common-linux.yml

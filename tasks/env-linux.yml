@@ -1,0 +1,4 @@
+---
+
+- name: Setup the environment
+  template: src=golang.sh dest=/etc/profile.d/golang.sh

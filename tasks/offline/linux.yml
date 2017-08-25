@@ -1,0 +1,10 @@
+---
+
+- name: Add the Linux OS specific varibles
+  include_vars: offline/linux.yml
+
+- name: Copy over the pre-downloaded package and unarchive it
+  unarchive: src={{ golang_package_path }} dest={{ golang_install_linux_dir }} copy=yes
+
+- name: Do common something
+  include: common-linux.yml

@@ -1,5 +1,5 @@
 ---
-golang_version: "1.8.3"
+
 golang_install_dir: c://soft
 golang_temp_dir: c://soft
 golang_package_kind: zip

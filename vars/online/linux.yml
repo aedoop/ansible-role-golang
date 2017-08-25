@@ -1,5 +1,6 @@
 ---
-golang_version: "1.8.3"
+
+#golang_version: "1.8.3"
 golang_install_dir: /usr/local 
 golang_temp_dir: /usr/local/src
 golang_package_kind: tar.gz

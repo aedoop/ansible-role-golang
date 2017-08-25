@@ -1,12 +1,21 @@
 ---
 # defaults file for golang
 
-#golang_download_url: ftp://10.0.250.100/pub/golang/linux/go1.8.3.linux-amd64.tar.gz
+# Common config
 
-#golang_download_url: 
+golang_version: "1.8.3"
 
-offline: true
+offline: false
 
 golang_base_install_url: https://storage.googleapis.com/golang
 
 golang_checksum_algo: sha256
+
+
+# Linux config
+user: golang 
+group: gloang
+golang_install_linux_dir: /usr/local
+golang_temp_linux_dir: /usr/local/src
+
+# Window config

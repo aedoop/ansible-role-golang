@@ -11,13 +11,21 @@
     golang_is_installed: "{{ version_check_result.rc == 0 }}"
 
 - block:
+  - name: Online install golang for linux
+    include: online/linux.yml
+    when: ansible_os_family!="Windows"
 
-    - name: Install golang for linux
-      include: linux.yml
+  - name: Online install golang for window
+    include: online/window.yml
+    when: ansible_os_family=="Windows"
+  when: not golang_is_installed and not offline
+
+- block:
+    - name: Offline install golang for linux
+      include: offline/linux.yml
       when: ansible_os_family!="Windows"
-    
-    - name: Install golang for window
-      include: window.yml
-      when: ansible_os_family=="Windows"
 
-  when: not golang_is_installed
+    - name: Offline install golang for window
+      include: offline/window.yml
+      when: ansible_os_family=="Windows"
+  when: not golang_is_installed and offline
