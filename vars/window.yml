@@ -1,0 +1,26 @@
+---
+
+install_dir: C:\soft 
+temp_dir: C:\soft\temp
+
+packages_by_push: 
+  "1.8.3":
+    64-bit:
+      package: go1.8.3.windows-amd64.zip
+      path: go1.8.3.windows-amd64.zip
+      checksum: de026caef4c5b4a74f359737dcb2d14c67ca45c45093755d3b0d2e0ee3aafd96
+      checksum_algo: sha256
+
+
+packages_by_pull:
+  "1.8.3":
+    64-bit:
+      package: go1.8.3.windows-amd64.zip
+      url: https://storage.googleapis.com/golang/go1.8.3.windows-amd64.zip
+      #url: ftp://10.0.250.100/pub/golang/window/go1.8.3.windows-amd64.zip
+      checksum: de026caef4c5b4a74f359737dcb2d14c67ca45c45093755d3b0d2e0ee3aafd96
+      checksum_algo: sha256
+
+
+
+

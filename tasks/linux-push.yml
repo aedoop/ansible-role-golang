@@ -1,0 +1,14 @@
+---
+
+# - name: Add the Linux OS specific varibles
+#   include_vars: linux.yml
+
+- name: Gather package facts for linux
+  set_fact:
+    package_info: "{{ packages_by_push[golang_version][ansible_architecture] }}"
+
+- name: Copy over the pre-downloaded package and unarchive it
+  unarchive: src={{ package_info.path }} dest={{ install_dir }} copy=yes
+
+- name: Do common something for linux
+  include: linux-common.yml

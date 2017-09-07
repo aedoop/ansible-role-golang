@@ -1,0 +1,18 @@
+---
+
+- name: Unzip a install package
+  win_unzip: src={{ temp_dir }}/{{ package_info.package }} dest={{ install_dir }}
+
+- name: Set the GOROOT environment
+  win_path:
+    name: GOROOT
+    elements: "{{ install_dir }}\\go"
+
+# - name: Set the GOPATH environment
+#   win_path: name=GOPATH elements={{ workspace_dir }}
+
+- name: Set the Path environment
+  win_path: elements="{{ install_dir }}\\go\\bin"
+
+- name: Remove install package
+  win_file: path={{ temp_dir }}/{{ package_info.package }} state=absent

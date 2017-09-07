@@ -1,0 +1,17 @@
+---
+
+- name: Add the window OS specific varibles
+  include_vars: window.yml
+
+- name: Check whether golang is already installed for window
+  win_command: "go version"
+  failed_when: false
+  changed_when: false
+  register: version_check_result
+
+- set_fact:
+    is_installed: "{{ version_check_result.rc == 0 }}"
+
+- name: Install golang for window by {{ mode }}
+  include: "window-{{ mode }}.yml"
+  when: not is_installed

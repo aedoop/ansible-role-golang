@@ -1,0 +1,33 @@
+---
+
+# - name: Add the Linux OS specific varibles
+#   include_vars: linux.yml
+
+- name: Gather package facts for linux
+  set_fact:
+    package_info: "{{ packages_by_pull[golang_version][ansible_architecture] }}"
+
+# - name: Setting host golang facts
+#   set_fact:
+#     golang_package: go{{ golang_version }}.{{ os_info.family }}-{{ os_info.architecture[ansible_architecture] }}.{{ golang_package_kind }}
+#     golang_checksum: "{{ golang_checksum_algo }}:{{ golang_packages[golang_version][ansible_architecture].checksum }}"
+#     golang_install_dir: "{{ golang_info[ os_info.family].install_dir }}"
+#     golang_download_dir: "{{ golang_info[ os_info.family].download_dir }}"
+
+- name: Download package for linux
+  get_url:
+    url: "{{ package_info.url }}"
+    dest: "{{ temp_dir }}"
+    #checksum: "{{ golang_checksum }}"
+
+- name: Install golang for linux
+  unarchive: 
+    src: "{{ temp_dir }}/{{ package_info.package }}"
+    dest: "{{ install_dir }}"
+    copy: no
+
+- name: Remove install package for linux
+  file: path={{ temp_dir }}/{{ package_info.package }} state=absent
+
+- name: Do common something for linux
+  include: linux-common.yml

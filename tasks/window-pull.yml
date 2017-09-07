@@ -1,0 +1,17 @@
+---
+
+- name: Gather package facts for window
+  set_fact:
+    package_info: "{{ packages_by_pull[golang_version][ansible_architecture] }}"
+
+- name: Check and create install and temp directory for window
+  win_file: path={{ item }} state=directory
+  with_items:
+    - "{{ install_dir }}"
+    - "{{ temp_dir }}"
+
+- name: Download package for window
+  win_get_url: url={{ package_info.url }} dest={{ temp_dir }}/{{ package_info.package }}
+
+- name: Do common something for window
+  include: window-common.yml

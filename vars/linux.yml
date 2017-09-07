@@ -1,0 +1,27 @@
+---
+
+install_dir: /usr/local 
+temp_dir: /usr/local/src
+workspace_dir: ~/workspace
+
+# user: golang 
+# group: gloang
+
+
+packages_by_push: 
+  "1.8.3":
+    x86_64:
+      package: go1.8.3.linux-amd64.tar.gz
+      path: go1.8.3.linux-amd64.tar.gz
+      checksum: 702ad90f705365227e902b42d91dd1a40e48ca7f67a2f4b2fd052aaa4295cd95
+      checksum_algo: sha256
+
+
+packages_by_pull:
+  "1.8.3":
+    x86_64:
+      package: go1.8.3.linux-amd64.tar.gz
+      url: https://storage.googleapis.com/golang/go1.8.3.linux-amd64.tar.gz
+      #url: ftp://10.0.250.100/pub/golang/linux/go1.8.3.linux-amd64.tar.gz
+      checksum: 702ad90f705365227e902b42d91dd1a40e48ca7f67a2f4b2fd052aaa4295cd95
+      checksum_algo: sha256

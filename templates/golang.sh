@@ -1,1 +1,1 @@
-PATH=$PATH:{{golang_install_dir}}/go/bin
+PATH=$PATH:{{ install_dir }}/go/bin

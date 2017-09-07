@@ -1,21 +1,7 @@
 ---
 # defaults file for golang
 
-# Common config
-
 golang_version: "1.8.3"
 
-offline: false
-
-golang_base_install_url: https://storage.googleapis.com/golang
-
-golang_checksum_algo: sha256
-
-
-# Linux config
-user: golang 
-group: gloang
-golang_install_linux_dir: /usr/local
-golang_temp_linux_dir: /usr/local/src
-
-# Window config
+# push or pull
+mode: push

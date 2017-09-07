@@ -1,0 +1,17 @@
+---
+
+- name: Add the Linux OS specific varibles
+  include_vars: linux.yml
+
+- name: Check whether golang is already installed for linux
+  command: "go version"
+  failed_when: false
+  changed_when: false
+  register: version_check_result
+
+- set_fact:
+    is_installed: "{{ version_check_result.rc == 0 }}"
+
+- name: Install golang for linux by {{ mode }}
+  include: "linux-{{ mode }}.yml"
+  when: not is_installed
