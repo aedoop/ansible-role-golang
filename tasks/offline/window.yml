@@ -1,5 +1,0 @@
----
-
-- name: Print info[window]
-  debug:
-    msg: "hello world"

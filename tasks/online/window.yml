@@ -1,8 +1,0 @@
----
-
-- name: Print info[window]
-  debug:
-    msg: "hello world window"
-
-- name: Add the Window OS specific varibles
-  include_vars: online/window.yml
